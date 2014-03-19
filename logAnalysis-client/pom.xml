@@ -48,6 +48,13 @@
 			<version>${commons-lang-version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>${beanutils-version}</version>
+		</dependency>
+
+
 
 
 
