@@ -1,18 +1,13 @@
 package com.heliosmi.logging.sender;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.List;
-import java.util.Map;
-
-import org.apache.commons.beanutils.BeanUtils;
-import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.heliosmi.logging.beans.LogMessage;
+import com.heliosmi.logging.data.LogMessage;
 
 public class LogSenderTest {
     private Logger log = LoggerFactory.getLogger(getClass());
@@ -43,5 +38,23 @@ public class LogSenderTest {
         LogMessage logMessage = new LogMessage.Builder().applicationName("applicationName").build();
         logSender.sendLogMessage(logMessage);
     }
+    
+    /*TODO persist data locally in case of failure.
+     * 
+     * @Test
+    public void testUnsuccesfulSendLogMessage() {
+        String brokerURL = "tcp://192.168.0.10:61616";
+        String destinationQueue = "dummyQ";
+        LogSender logSender = new LogSender(brokerURL, destinationQueue);
+        LogMessage logMessage = new LogMessage.Builder().applicationName("applicationName").build();
+        
+        log.info("Starting transaction");
+        try {
+            logSender.sendLogMessage(logMessage);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+           log.error(ExceptionUtils.getStackTrace(e));
+        }
+    }*/
 
 }

@@ -13,13 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package com.heliosmi.logging.beans;
+package com.heliosmi.logging.data;
 
 import java.util.Date;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.heliosmi.logging.beans.LogMessage.Builder;
 
 /**
  * Message bean for persistence. Utilizes a builder pattern for bean creation.
@@ -45,6 +44,7 @@ public class LogMessage extends BaseBean {
     private String response;
     private boolean errorYN;
     private String errorStacktrace;
+ 
 
     public static class Builder {
 
@@ -167,6 +167,14 @@ public class LogMessage extends BaseBean {
         return methodName;
     }
 
+    public String getPackageName() {
+        return packageName;
+    }
+
+    public String getApplicationName() {
+        return applicationName;
+    }
+
     public String getHostName() {
         return hostName;
     }
@@ -193,14 +201,6 @@ public class LogMessage extends BaseBean {
 
     public String getErrorStacktrace() {
         return errorStacktrace;
-    }
-
-    public String getPackageName() {
-        return packageName;
-    }
-
-    public String getApplicationName() {
-        return applicationName;
-    }
+    }    
 
 }

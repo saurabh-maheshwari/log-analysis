@@ -29,10 +29,16 @@
 			<artifactId>logAnalysis-client</artifactId>
 			<version>0.1.0-BUILD-SNAPSHOT</version>
 		</dependency>
+		
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
+			<version>${spring-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
 			<version>${spring-version}</version>
 		</dependency>
 		<dependency>
@@ -46,6 +52,28 @@
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
 			<version>${aspectj-version}</version>
+		</dependency>
+		
+		<!-- Hibernate  -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate-version}</version>
+		</dependency>
+		
+		<!-- Commons configuration -->
+		<dependency>
+	<groupId>commons-configuration</groupId>
+	<artifactId>commons-configuration</artifactId>
+	<version>${commons-configuration-version}</version>
+</dependency>
+            
+		
+		<!-- Mysql driver -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql-connector-version}</version>
 		</dependency>
 
 	</dependencies>

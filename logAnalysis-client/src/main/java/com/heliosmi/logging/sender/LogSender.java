@@ -12,7 +12,6 @@ import javax.jms.Session;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.command.ActiveMQQueue;
 import org.apache.commons.beanutils.BeanUtils;
-import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.slf4j.Logger;
@@ -20,7 +19,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 
-import com.heliosmi.logging.beans.LogMessage;
+import com.heliosmi.logging.data.LogMessage;
 
 /**
  * Helper class to send message to ActiveMQ queue.
@@ -47,6 +46,9 @@ public class LogSender {
 
         jmsTemplate = new JmsTemplate(connectionFactory);
         jmsTemplate.setDefaultDestination(activeMQQueue);
+        /*jmsTemplate.setExplicitQosEnabled(true);
+        jmsTemplate.setTimeToLive(1);*/
+        
     }
 
     /**
