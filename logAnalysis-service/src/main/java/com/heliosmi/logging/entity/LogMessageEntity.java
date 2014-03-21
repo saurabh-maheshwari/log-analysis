@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.Table;
 
 import com.heliosmi.logging.data.BaseBean;
 
@@ -14,6 +15,7 @@ import com.heliosmi.logging.data.BaseBean;
  *
  */
 @Entity
+@Table(name="LogMessage")
 public class LogMessageEntity extends BaseBean {
     
     @Id

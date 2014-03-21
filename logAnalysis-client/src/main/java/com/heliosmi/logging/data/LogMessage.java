@@ -95,7 +95,7 @@ public class LogMessage extends BaseBean {
             return this;
         }
 
-        public Builder duration(int intValue) {
+        public Builder duration(long intValue) {
             duration = intValue;
             return this;
         }
