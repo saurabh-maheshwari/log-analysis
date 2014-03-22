@@ -19,5 +19,7 @@ public class LogListenerTest {
     public void testconfig() {
         assertNotNull(logListener);
     }
+    
+    //TODO Need more tests
 
 }
