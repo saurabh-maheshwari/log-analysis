@@ -13,15 +13,22 @@ public class LogMessageTest {
 
     @Test
     public void testCreation() {
-        LogMessage logMessage = new LogMessage.Builder().threadID("threadName").correlationID("correlationID")
-                .className("className").methodName("methodName").applicationName("applicationName")
-                .hostName("hostName").duration(3).request("request").packageName("packageName").response("response")
-                .errorYN(Boolean.FALSE).errorStacktrace("errorStacktrace").build();
+        LogMessage logMessage = new LogMessage.Builder()
+        .threadID("threadName")
+        .className("className")
+        .methodName("methodName")
+        .applicationName("applicationName")
+        .hostName("hostName")
+        .duration(3)
+        .request("request")
+        .packageName("packageName")
+        .response("response")
+        .errorYN(Boolean.FALSE)
+        .errorStacktrace("errorStacktrace").build();
 
         assertNotNull(logMessage.getCreatedDate());
         assertTrue(logMessage.getDuration() == 3);
         assertTrue(logMessage.getThreadID().equals("threadName"));
-        assertTrue(logMessage.getCorrelationID().equals("correlationID"));
         assertTrue(logMessage.getClassName().equals("className"));
         assertTrue(logMessage.getMethodName().equals("methodName"));
         assertTrue(logMessage.getApplicationName().equals("applicationName"));

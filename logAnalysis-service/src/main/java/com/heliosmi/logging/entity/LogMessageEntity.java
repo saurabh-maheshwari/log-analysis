@@ -22,8 +22,7 @@ public class LogMessageEntity extends BaseBean {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     
-    private String threadID;
-    private String correlationID;
+    private String threadID;   
     private String className;
     private String methodName;
     private String packageName;
@@ -48,12 +47,7 @@ public class LogMessageEntity extends BaseBean {
     public void setThreadID(String threadID) {
         this.threadID = threadID;
     }
-    public String getCorrelationID() {
-        return correlationID;
-    }
-    public void setCorrelationID(String correlationID) {
-        this.correlationID = correlationID;
-    }
+   
     public String getClassName() {
         return className;
     }

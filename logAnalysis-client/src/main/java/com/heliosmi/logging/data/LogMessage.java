@@ -31,8 +31,7 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class LogMessage extends BaseBean {
 
-    private String threadID;
-    private String correlationID;
+    private String threadID;   
     private String className;
     private String methodName;
     private String packageName;
@@ -73,12 +72,7 @@ public class LogMessage extends BaseBean {
         public Builder threadID(String strValue) {
             threadID = truncate(strValue, MAX_FIELD_LENGTH);
             return this;
-        }
-
-        public Builder correlationID(String strValue) {
-            correlationID = truncate(strValue, MAX_FIELD_LENGTH);
-            return this;
-        }
+        }        
 
         public Builder className(String strValue) {
             className = truncate(strValue, MAX_FIELD_LENGTH);
@@ -137,8 +131,7 @@ public class LogMessage extends BaseBean {
 
     private LogMessage(Builder builder) {
         createdDate = builder.createdDate;
-        threadID = builder.threadID;
-        correlationID = builder.correlationID;
+        threadID = builder.threadID;        
         className = builder.className;
         methodName = builder.methodName;
         hostName = builder.hostName;
@@ -155,9 +148,7 @@ public class LogMessage extends BaseBean {
         return threadID;
     }
 
-    public String getCorrelationID() {
-        return correlationID;
-    }
+   
 
     public String getClassName() {
         return className;
