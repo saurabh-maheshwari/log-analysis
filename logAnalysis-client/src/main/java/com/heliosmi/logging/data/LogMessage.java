@@ -19,19 +19,23 @@ import java.util.Date;
 
 import org.apache.commons.lang3.StringUtils;
 
-
 /**
  * Message bean for persistence. Utilizes a builder pattern for bean creation.
  * 
  * <p>
  * createdDate is number of milliseconds since January 1, 1970.
  * 
+ * <p>
+ * Request, response and errorStackTrace will be truncated to 1000 characters.
+ * All the other fields will be limited to 50. These settings can be changed by changing
+ * the constants.
+ * 
  * @author Saurabh Maheshwari
  * 
  */
 public class LogMessage extends BaseBean {
 
-    private String threadID;   
+    private String threadID;
     private String className;
     private String methodName;
     private String packageName;
@@ -43,7 +47,6 @@ public class LogMessage extends BaseBean {
     private String response;
     private boolean errorYN;
     private String errorStacktrace;
- 
 
     public static class Builder {
 
@@ -72,7 +75,7 @@ public class LogMessage extends BaseBean {
         public Builder threadID(String strValue) {
             threadID = truncate(strValue, MAX_FIELD_LENGTH);
             return this;
-        }        
+        }
 
         public Builder className(String strValue) {
             className = truncate(strValue, MAX_FIELD_LENGTH);
@@ -131,7 +134,7 @@ public class LogMessage extends BaseBean {
 
     private LogMessage(Builder builder) {
         createdDate = builder.createdDate;
-        threadID = builder.threadID;        
+        threadID = builder.threadID;
         className = builder.className;
         methodName = builder.methodName;
         hostName = builder.hostName;
@@ -147,8 +150,6 @@ public class LogMessage extends BaseBean {
     public String getThreadID() {
         return threadID;
     }
-
-   
 
     public String getClassName() {
         return className;
@@ -192,6 +193,6 @@ public class LogMessage extends BaseBean {
 
     public String getErrorStacktrace() {
         return errorStacktrace;
-    }    
+    }
 
 }

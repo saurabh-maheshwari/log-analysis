@@ -85,8 +85,12 @@
 			<version>${cglib-version}</version>
 		</dependency>
 
-
-
+		<!-- ActiveMQ Pooled Connection Factory -->
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-pool</artifactId>
+			<version>${activemq-version}</version>
+		</dependency>
 
 		<!-- Mysql driver -->
 		<dependency>
