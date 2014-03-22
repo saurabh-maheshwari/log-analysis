@@ -15,6 +15,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.heliosmi.logging.entity.LogMessageEntity;
 
@@ -22,6 +23,7 @@ import com.heliosmi.logging.entity.LogMessageEntity;
 @PropertySource("classpath:app.properties")
 @ComponentScan("com.heliosmi.logging.aspect")
 @EnableAspectJAutoProxy
+//@EnableTransactionManagement
 public class AppConfiguration {
     private Logger log = LoggerFactory.getLogger(getClass());
 
@@ -29,20 +31,19 @@ public class AppConfiguration {
     private Environment env;
 
     @Bean
+    public HibernateTransactionManager transactionManager() throws ConfigurationException {
+        HibernateTransactionManager transactionManager = new HibernateTransactionManager(sessionFactoryBean().getObject());
+        return transactionManager;
+    }
+
+    @Bean
     public LocalSessionFactoryBean sessionFactoryBean() throws ConfigurationException {
         LocalSessionFactoryBean bean = new LocalSessionFactoryBean();
         bean.setDataSource(dataSource());
-        //bean.setAnnotatedClasses(LogMessageEntity.class);
+        // bean.setAnnotatedClasses(LogMessageEntity.class);
         bean.setPackagesToScan("com.heliosmi.logging.entity");
 
         return bean;
-    }
-
-  
-
-    @Bean
-    public HibernateTransactionManager transactionManager() throws ConfigurationException {
-        return new HibernateTransactionManager(sessionFactoryBean().getObject());
     }
 
     @Bean
@@ -55,7 +56,7 @@ public class AppConfiguration {
         dataSource.setPassword(env.getProperty("jdbc.password"));
         dataSource.setInitialSize(Integer.parseInt(env.getProperty("jdbc.initialSize")));
         dataSource.setMaxActive(Integer.parseInt(env.getProperty("jdbc.maxActive")));
-        
+
         return dataSource;
 
     }

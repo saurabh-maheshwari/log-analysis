@@ -78,6 +78,14 @@
 			<version>${commons-dbcp-version}</version>
 		</dependency>
 
+		<!-- Cglib -->
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>${cglib-version}</version>
+		</dependency>
+
+
 
 
 		<!-- Mysql driver -->

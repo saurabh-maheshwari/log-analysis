@@ -32,7 +32,7 @@ public class AspectLogger {
     private Logger log = LoggerFactory.getLogger(getClass());
 
     //@Pointcut("within(com.heliosmi.logging..*) && !bean(appConfiguration)")
-    @Pointcut("within(com.heliosmi.logging..*)")
+    @Pointcut("within(com.heliosmi.logging.entity..*)")
     public void allLocalBeans() {
     }
 

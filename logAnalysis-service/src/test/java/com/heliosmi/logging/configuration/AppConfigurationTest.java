@@ -21,13 +21,13 @@ public class AppConfigurationTest {
     @Autowired
     private SessionFactory sessionFactory;
     
-    @Autowired
+    /*@Autowired
     private HibernateTransactionManager transactionManager;
-
+*/
     @Test
     public void testConfig() {
         assertNotNull(sessionFactory);
-        assertNotNull(transactionManager);
+        //assertNotNull(transactionManager);
     }
     
     @Test
