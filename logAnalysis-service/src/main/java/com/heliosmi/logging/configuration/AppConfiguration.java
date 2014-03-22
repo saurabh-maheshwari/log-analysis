@@ -21,8 +21,8 @@ import com.heliosmi.logging.entity.LogMessageEntity;
 
 @Configuration
 @PropertySource("classpath:app.properties")
-@ComponentScan("com.heliosmi.logging.aspect")
-@EnableAspectJAutoProxy
+//@ComponentScan("com.heliosmi.logging.aspect")
+//@EnableAspectJAutoProxy
 //@EnableTransactionManagement
 public class AppConfiguration {
     private Logger log = LoggerFactory.getLogger(getClass());

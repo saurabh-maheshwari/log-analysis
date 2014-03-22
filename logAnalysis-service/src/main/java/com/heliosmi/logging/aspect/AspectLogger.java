@@ -31,13 +31,13 @@ public class AspectLogger {
     private static final String APP_NAME = "maheshwari.saurabh";
     private Logger log = LoggerFactory.getLogger(getClass());
 
-    //@Pointcut("within(com.heliosmi.logging..*) && !bean(appConfiguration)")
+    // @Pointcut("within(com.heliosmi.logging..*) && !bean(appConfiguration)")
     @Pointcut("within(com.heliosmi.logging.entity..*)")
     public void allLocalBeans() {
     }
 
     @Around("allLocalBeans()")
-    public void profiler(ProceedingJoinPoint pjp) throws Throwable {
+    public Object profiler(ProceedingJoinPoint pjp) throws Throwable {
         Stopwatch stopwatch = Stopwatch.createStarted();
         Object returnValue = null;
 
@@ -49,14 +49,27 @@ public class AspectLogger {
         }
         LogMessage logMessage = new LogMessage.Builder().applicationName(APP_NAME)
                 .className(pjp.getTarget().getClass().getSimpleName())
-                .duration(stopwatch.elapsed(TimeUnit.MILLISECONDS)).hostName(InetAddressUtil.getLocalHostName())
+                .duration(stopwatch.elapsed(TimeUnit.MILLISECONDS)).hostName(getLocalHostName())
                 .methodName(pjp.getSignature().getName())
                 .packageName(pjp.getTarget().getClass().getPackage().toString())
                 .request(generateToString(pjp.getArgs())).threadID(uniqueNum.get().toString()).build();
-        
+
         log.info(logMessage.toString());
 
+        return returnValue;
+
     }
+
+    private String getLocalHostName() {
+        String localHostName = "UNKNOWN_HOST";
+        try {
+            localHostName = InetAddressUtil.getLocalHostName();
+        } catch (UnknownHostException e) {
+            log.error("Cannot identify hostName.");
+        }
+
+        return localHostName;
+    }    
 
     private String generateToString(Object[] args) {
         return ToStringBuilder.reflectionToString(args, ToStringStyle.DEFAULT_STYLE);
