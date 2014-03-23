@@ -50,4 +50,8 @@ public class LogListener implements MessageListener {
         }
     }
 
+    public void setSessionFactory(SessionFactory sessionFactory) {
+       this.sessionFactory=sessionFactory;        
+    }
+
 }

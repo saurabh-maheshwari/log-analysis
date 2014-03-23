@@ -2,6 +2,7 @@ package com.heliosmi.logging.configuration;
 
 import javax.jms.ConnectionFactory;
 import javax.jms.Destination;
+import javax.jms.MessageListener;
 import javax.sql.DataSource;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
@@ -39,7 +40,7 @@ import com.heliosmi.logging.listener.LogListener;
  */
 @Configuration
 @PropertySource("classpath:app.properties")
- @ComponentScan("com.heliosmi.logging.listener")
+@ComponentScan("com.heliosmi.logging.listener")
 // @EnableAspectJAutoProxy
 @EnableTransactionManagement
 public class AppConfiguration {
@@ -49,7 +50,7 @@ public class AppConfiguration {
     private Environment env;
     
     @Autowired
-    private LogListener logListener;
+    private MessageListener logListener;
 
     @Bean
     public DefaultMessageListenerContainer defaultMessageListenerContainer() {

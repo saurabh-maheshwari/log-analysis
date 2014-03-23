@@ -30,6 +30,7 @@
 		<mysql-connector-version>5.1.28</mysql-connector-version>
 		<log4j-version>1.2.17</log4j-version>
 		<junit-version>4.11</junit-version>
+		<mockito-version>1.9.5</mockito-version>
 	</properties>
 
 
@@ -77,6 +78,12 @@
 			<version>${spring-version}</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>${mockito-version}</version>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>
