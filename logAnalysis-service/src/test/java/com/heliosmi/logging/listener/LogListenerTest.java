@@ -1,6 +1,6 @@
 package com.heliosmi.logging.listener;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
@@ -10,8 +10,6 @@ import javax.jms.MessageListener;
 
 import org.apache.activemq.command.ActiveMQMapMessage;
 import org.apache.commons.beanutils.BeanUtils;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +17,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.heliosmi.logging.data.LogMessage;
-import com.heliosmi.logging.entity.LogMessageEntity;
 import com.heliosmi.logging.util.TestDataFactory;
-
-import static org.mockito.Mockito.*;
 
 @ContextConfiguration(locations = { "classpath:/spring/root-context.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)

@@ -2,7 +2,6 @@ package com.heliosmi.logging.configuration;
 
 import javax.sql.DataSource;
 
-import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
