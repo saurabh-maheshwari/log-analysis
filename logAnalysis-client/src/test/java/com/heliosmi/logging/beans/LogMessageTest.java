@@ -8,23 +8,13 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Test;
 
 import com.heliosmi.logging.data.LogMessage;
+import com.heliosmi.logging.util.TestDataFactory;
 
 public class LogMessageTest {
 
     @Test
     public void testCreation() {
-        LogMessage logMessage = new LogMessage.Builder()
-        .threadID("threadName")
-        .className("className")
-        .methodName("methodName")
-        .applicationName("applicationName")
-        .hostName("hostName")
-        .duration(3)
-        .request("request")
-        .packageName("packageName")
-        .response("response")
-        .errorYN(Boolean.FALSE)
-        .errorStacktrace("errorStacktrace").build();
+        LogMessage logMessage = TestDataFactory.createLogMessage();
 
         assertNotNull(logMessage.getCreatedDate());
         assertTrue(logMessage.getDuration() == 3);
@@ -39,6 +29,7 @@ public class LogMessageTest {
         assertFalse(logMessage.isErrorYN());
         assertTrue(logMessage.getErrorStacktrace().equals("errorStacktrace"));
     }
+
 
     @Test
     public void testTruncate_Request_Response_ErrorStacktrace() {

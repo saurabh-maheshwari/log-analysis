@@ -79,11 +79,11 @@
 		</dependency>
 
 		<!-- Cglib -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>cglib</groupId>
 			<artifactId>cglib</artifactId>
 			<version>${cglib-version}</version>
-		</dependency>
+		</dependency>  -->
 
 		<!-- ActiveMQ Pooled Connection Factory -->
 		<dependency>

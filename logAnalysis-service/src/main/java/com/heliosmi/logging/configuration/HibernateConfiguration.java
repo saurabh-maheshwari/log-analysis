@@ -16,7 +16,8 @@ import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
- * App Configuration class.
+ * Configuration class for Hibernate beans. <code>transactionManager</code> is
+ * initialized here.
  * <p>
  * Programmatically configure beans instead of using xml.
  * 
@@ -32,15 +33,26 @@ public class HibernateConfiguration {
     @Autowired
     private Environment env;
 
+    /**
+     * Defines a <code>transactionManager</code> for Hibernate managed entities.
+     * 
+     * @return
+     */
     @Bean
-    public HibernateTransactionManager transactionManager() throws ConfigurationException {
+    public HibernateTransactionManager transactionManager() {
         HibernateTransactionManager transactionManager = new HibernateTransactionManager(sessionFactoryBean()
                 .getObject());
         return transactionManager;
     }
 
+    /**
+     * Defines a <code>LocalSessionFactoryBean</code>. It will scan entities
+     * underneath scanned package.
+     * 
+     * @return LocalSessionFactoryBean
+     */
     @Bean
-    public LocalSessionFactoryBean sessionFactoryBean() throws ConfigurationException {
+    public LocalSessionFactoryBean sessionFactoryBean() {
         LocalSessionFactoryBean bean = new LocalSessionFactoryBean();
         bean.setDataSource(dataSource());
         bean.setPackagesToScan("com.heliosmi.logging.entity");
@@ -48,6 +60,12 @@ public class HibernateConfiguration {
         return bean;
     }
 
+    /**
+     * Defines local Data Source. Connection properties are pulled out of
+     * <code>environment</code> bean.
+     * 
+     * @return
+     */
     @Bean
     public DataSource dataSource() {
         BasicDataSource dataSource = new BasicDataSource();

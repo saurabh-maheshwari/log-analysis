@@ -35,7 +35,7 @@ public class LogListener implements MessageListener {
     private SessionFactory sessionFactory;
 
     @Override
-    @Transactional
+    @Transactional("transactionManager")
     public void onMessage(Message message) {
         if (message instanceof ActiveMQMapMessage) {
             Session session = sessionFactory.getCurrentSession();

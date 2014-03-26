@@ -21,7 +21,12 @@ import org.springframework.jms.listener.DefaultMessageListenerContainer;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-
+/**
+ * Configuration class to initialize ActiveMQ beans.
+ * 
+ * @author Saurabh Maheshwari
+ * 
+ */
 @Configuration
 @EnableTransactionManagement
 @PropertySource("classpath:app.properties")
@@ -29,13 +34,13 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Import(HibernateConfiguration.class)
 public class ActiveMQConfiguration {
     private Logger log = LoggerFactory.getLogger(getClass());
-    
+
     @Autowired
     private Environment env;
-    
-    @Autowired    
+
+    @Autowired
     private MessageListener logListener;
-    
+
     @Bean
     public DefaultMessageListenerContainer defaultMessageListenerContainer() {
         DefaultMessageListenerContainer defaultMessageListenerContainer = new DefaultMessageListenerContainer();
@@ -48,7 +53,6 @@ public class ActiveMQConfiguration {
         return defaultMessageListenerContainer;
     }
 
-    
     @Bean
     public ConnectionFactory activeMQConnectionFactory() {
         ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory(
@@ -57,14 +61,13 @@ public class ActiveMQConfiguration {
 
         return pooledConnectionFactory;
     }
-    
 
     @Bean
     public Destination activeMQDestination() {
         ActiveMQQueue destination = new ActiveMQQueue(env.getProperty("activeMQ.logQueue"));
         return destination;
     }
-    
+
     @Bean
     public PlatformTransactionManager jmsTransactionManagerBean() {
         JmsTransactionManager jmsTransactionManager = new JmsTransactionManager(activeMQConnectionFactory());
