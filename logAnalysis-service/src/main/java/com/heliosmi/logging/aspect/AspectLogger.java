@@ -18,6 +18,11 @@ import org.springframework.stereotype.Component;
 import com.google.common.base.Stopwatch;
 import com.heliosmi.logging.data.LogMessage;
 
+/**
+ * AOP Logger to log across all Spring beans with in the application. It should not use LogSender to submit data to sink.
+ * @author Saurabh Maheshwari
+ *
+ */
 @Component
 @Aspect
 public class AspectLogger {
@@ -28,11 +33,10 @@ public class AspectLogger {
         }
     };
 
-    private static final String APP_NAME = "maheshwari.saurabh";
+    private static final String APP_NAME = "LogAnalysis";
     private Logger log = LoggerFactory.getLogger(getClass());
-
-    // @Pointcut("within(com.heliosmi.logging..*) && !bean(appConfiguration)")
-    @Pointcut("within(com.heliosmi.logging.entity..*)")
+    
+    @Pointcut("within(com.heliosmi.logging..*)")
     public void allLocalBeans() {
     }
 

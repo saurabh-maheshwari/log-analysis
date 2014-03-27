@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
@@ -22,15 +23,20 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
- * Configuration class to initialize ActiveMQ beans.
+ * Configuration class to initialize ActiveMQ beans. Also scans the base-package
+ * to pull other beans. 
+ * <p>This class should be initialized after
+ * {@link HibernateConfiguration}, since <code>transactionManager</code> defined
+ * in {@link HibernateConfiguration} is used for persistence.
  * 
  * @author Saurabh Maheshwari
  * 
  */
 @Configuration
 @EnableTransactionManagement
-@ComponentScan("com.heliosmi.logging.listener")
+@ComponentScan("com.heliosmi.logging")
 @Import(HibernateConfiguration.class)
+@EnableAspectJAutoProxy
 public class ActiveMQConfiguration {
     private Logger log = LoggerFactory.getLogger(getClass());
 
@@ -40,6 +46,12 @@ public class ActiveMQConfiguration {
     @Autowired
     private MessageListener logListener;
 
+    /**
+     * Initializes container to process messages from ActiveMQ broker. Broker
+     * settings are pulled from <code>app.properties</code> file.
+     * 
+     * @return defaultMessageListenerContainer
+     */
     @Bean
     public DefaultMessageListenerContainer defaultMessageListenerContainer() {
         DefaultMessageListenerContainer defaultMessageListenerContainer = new DefaultMessageListenerContainer();
@@ -52,6 +64,12 @@ public class ActiveMQConfiguration {
         return defaultMessageListenerContainer;
     }
 
+    /**
+     * Create a {@link PooledConnectionFactory} to ActiveMQ broker. Connection
+     * settings are pulled from <code>app.properties</code> file.
+     * 
+     * @return pooledConnectionFactory
+     */
     @Bean
     public ConnectionFactory activeMQConnectionFactory() {
         ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory(
@@ -61,12 +79,24 @@ public class ActiveMQConfiguration {
         return pooledConnectionFactory;
     }
 
+    /**
+     * Create a queue destination to pull messages from. Queue name is pulled
+     * from <code>app.properties</code> file.
+     * 
+     * @return destination
+     */
     @Bean
     public Destination activeMQDestination() {
         ActiveMQQueue destination = new ActiveMQQueue(env.getProperty("activeMQ.logQueue"));
         return destination;
     }
 
+    /**
+     * Create a {@link JmsTransactionManager} to be used for
+     * <code>defaultMessageListenerContainer</code>
+     * 
+     * @return jmsTransactionManagerBean
+     */
     @Bean
     public PlatformTransactionManager jmsTransactionManagerBean() {
         JmsTransactionManager jmsTransactionManager = new JmsTransactionManager(activeMQConnectionFactory());

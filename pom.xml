@@ -82,6 +82,14 @@ Licensed under the Apache License,
 			<version>${spring-version}</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- Used to initialize embedded ActiveMQ broker -->
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-kahadb-store</artifactId>
+			<version>${activemq-version}</version>
+			<scope>test</scope>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-all</artifactId>
