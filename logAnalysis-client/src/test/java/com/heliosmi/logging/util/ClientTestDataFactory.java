@@ -26,7 +26,7 @@ public class ClientTestDataFactory {
      * @return LogSender
      */
     public static final LogSender createLocalLogSender(){
-        String brokerURL = "vm://localhost:61616";
+        String brokerURL = "vm://localhost:61617";
         String destinationQueue = "LogMessages.Q";
         LogSender logSender = new LogSender(brokerURL, destinationQueue);
         return logSender;

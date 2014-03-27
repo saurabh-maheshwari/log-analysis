@@ -22,7 +22,7 @@ public class LogSenderTest {
     @Before
     public void setUp() throws Exception {
         // configure the broker
-        broker.addConnector("tcp://localhost:61616");
+        broker.addConnector("tcp://localhost:61617");
         broker.start();
     }
 

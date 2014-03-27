@@ -31,7 +31,7 @@ public abstract class BaseIntegration {
 
     @Before
     public void setUp() throws Exception {        
-        broker.addConnector("tcp://localhost:61616");
+        broker.addConnector("tcp://localhost:61617");
         broker.start();
     }
 
