@@ -20,8 +20,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.heliosmi.logging.entity.LogMessageEntity;
 
 /**
- * Listener class to pull message from ActiveMQ queue. It will populate the
- * LogMessageEntity from ActiveMqMapMessage using BeanUtils.
+ * Listener class to pull message from ActiveMQ queue. It will transform
+ * ActiveMqMapMessage to LogMessageEntity using BeanUtils.
  * 
  * @author Saurabh Maheshwari
  * 

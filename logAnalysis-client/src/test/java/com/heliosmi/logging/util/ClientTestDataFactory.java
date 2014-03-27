@@ -2,7 +2,7 @@ package com.heliosmi.logging.util;
 
 import com.heliosmi.logging.data.LogMessage;
 
-public class TestDataFactory {
+public class ClientTestDataFactory {
 
     public static final LogMessage createLogMessage() {
         LogMessage logMessage = new LogMessage.Builder()

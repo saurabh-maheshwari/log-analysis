@@ -15,8 +15,8 @@ import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
- * Configuration class for Hibernate beans. <code>transactionManager</code> is
- * initialized here.
+ * Configuration class for Hibernate beans. This should be the first class to
+ * initialize since <code>transactionManager</code> is initialized here.
  * <p>
  * Programmatically configure beans instead of using xml.
  * 

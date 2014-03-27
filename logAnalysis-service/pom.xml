@@ -105,6 +105,14 @@
 			<artifactId>guava</artifactId>
 			<version>${guava-version}</version>
 		</dependency>
+		
+		<!-- Test jar needed to access util package -->
+		<dependency>
+			<groupId>com.heliosmi</groupId>
+			<artifactId>logAnalysis-client</artifactId>
+			<version>0.1.0-BUILD-SNAPSHOT</version>
+			<type>test-jar</type>
+		</dependency>
 
 
 	</dependencies>

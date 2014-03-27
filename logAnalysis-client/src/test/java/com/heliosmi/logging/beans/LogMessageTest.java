@@ -8,13 +8,13 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Test;
 
 import com.heliosmi.logging.data.LogMessage;
-import com.heliosmi.logging.util.TestDataFactory;
+import com.heliosmi.logging.util.ClientTestDataFactory;
 
 public class LogMessageTest {
 
     @Test
     public void testCreation() {
-        LogMessage logMessage = TestDataFactory.createLogMessage();
+        LogMessage logMessage = ClientTestDataFactory.createLogMessage();
 
         assertNotNull(logMessage.getCreatedDate());
         assertTrue(logMessage.getDuration() == 3);

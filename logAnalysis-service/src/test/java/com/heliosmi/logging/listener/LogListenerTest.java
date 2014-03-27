@@ -11,17 +11,14 @@ import javax.jms.MessageListener;
 import org.apache.activemq.command.ActiveMQMapMessage;
 import org.apache.commons.beanutils.BeanUtils;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.heliomi.logging.util.ServiceTestDataFactory;
+import com.heliosmi.logging.configuration.BaseIntegration;
 import com.heliosmi.logging.data.LogMessage;
-import com.heliosmi.logging.util.TestDataFactory;
+import com.heliosmi.logging.util.ClientTestDataFactory;
 
-@ContextConfiguration(locations = { "classpath:/spring/root-context.xml" })
-@RunWith(SpringJUnit4ClassRunner.class)
-public class LogListenerTest {
+public class LogListenerTest extends BaseIntegration {
 
     @Autowired
     private MessageListener logListener;
@@ -36,43 +33,36 @@ public class LogListenerTest {
      * 
      * @throws JMSException
      */
-    /*@Test
-    public void testOnMessage() throws JMSException {
-        LogListener logListener = new LogListener();
-
-        ActiveMQMapMessage activeMQMapMessage = new ActiveMQMapMessage();
-        activeMQMapMessage.setString("applicationName", "logAnalysis");
-
-        SessionFactory sessionFactory = mock(SessionFactory.class);
-        Session session = mock(Session.class);
-        when(sessionFactory.getCurrentSession()).thenReturn(session);
-        when(session.save(new LogMessageEntity())).thenReturn(null);
-
-        logListener.setSessionFactory(sessionFactory);
-
-        logListener.onMessage(activeMQMapMessage);
-    }*/
+    /*
+     * @Test public void testOnMessage() throws JMSException { LogListener
+     * logListener = new LogListener();
+     * 
+     * ActiveMQMapMessage activeMQMapMessage = new ActiveMQMapMessage();
+     * activeMQMapMessage.setString("applicationName", "logAnalysis");
+     * 
+     * SessionFactory sessionFactory = mock(SessionFactory.class); Session
+     * session = mock(Session.class);
+     * when(sessionFactory.getCurrentSession()).thenReturn(session);
+     * when(session.save(new LogMessageEntity())).thenReturn(null);
+     * 
+     * logListener.setSessionFactory(sessionFactory);
+     * 
+     * logListener.onMessage(activeMQMapMessage); }
+     */
 
     /**
      * Tests a successful execution of onMesage.
-     *  
+     * 
      * @throws IllegalAccessException
      * @throws InvocationTargetException
      * @throws NoSuchMethodException
      * @throws JMSException
      */
     @Test
-    public void testOnMessageComplete() throws IllegalAccessException, InvocationTargetException,
+    public void testOnMessageSuccessful() throws IllegalAccessException, InvocationTargetException,
             NoSuchMethodException, JMSException {
-        LogMessage logMessage = TestDataFactory.createLogMessage();
-        ActiveMQMapMessage activeMQMapMessage = new ActiveMQMapMessage();
-
-        Map<String, String> k = BeanUtils.describe(logMessage);
-        for (String key : k.keySet()) {
-            activeMQMapMessage.setString(key, BeanUtils.getSimpleProperty(logMessage, key));
-        }
-
+        ActiveMQMapMessage activeMQMapMessage = ServiceTestDataFactory.createActiveMQMapMessage();
         logListener.onMessage(activeMQMapMessage);
-    }
+    }    
 
 }

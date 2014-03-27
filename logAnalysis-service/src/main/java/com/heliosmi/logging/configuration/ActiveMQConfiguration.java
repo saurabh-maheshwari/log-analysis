@@ -29,7 +29,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @Configuration
 @EnableTransactionManagement
-@PropertySource("classpath:app.properties")
 @ComponentScan("com.heliosmi.logging.listener")
 @Import(HibernateConfiguration.class)
 public class ActiveMQConfiguration {
