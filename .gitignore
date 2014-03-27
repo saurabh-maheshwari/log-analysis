@@ -4,6 +4,8 @@
 .settings/
 target/
 logAnalysis-client/activemq-data/
+logAnalysis-service/activemq-data/
+logAnalysis-service/hsql.*
 
 *.class
 

@@ -7,6 +7,7 @@ import java.lang.reflect.InvocationTargetException;
 
 import javax.jms.JMSException;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.Test;
@@ -24,10 +25,9 @@ public class HibernateConfigurationTest extends BaseIntegration {
 
     @Autowired
     private SessionFactory sessionFactory;
-    
+
     @Autowired
     private HibernateTransactionManager transactionManager;
-    
 
     @Test
     public void testConfig() {
@@ -44,19 +44,25 @@ public class HibernateConfigurationTest extends BaseIntegration {
      * @throws NoSuchMethodException
      * @throws JMSException
      */
-    @Test    
+    @Test
+    @Transactional
     public void saveLogMessageEntity() throws IllegalAccessException, InvocationTargetException, NoSuchMethodException,
             JMSException {
+        String applicationName = RandomStringUtils.random(10);
         LogMessageEntity logMessageEntity = ServiceTestDataFactory.createLogMessageEntity();
+        logMessageEntity.setApplicationName(applicationName);
+
         Session session = sessionFactory.getCurrentSession();
         session.save(logMessageEntity);
         session.clear();
 
-        LogMessageEntity logMessageEntity2 = (LogMessageEntity) session.createQuery(
-                "from LogMessageEntity where className='className' ").uniqueResult();
+        LogMessageEntity logMessageEntity2 = (LogMessageEntity) session
+                .createQuery("from LogMessageEntity where applicationName= :applicationName ")
+                .setString("applicationName", applicationName)
+                .uniqueResult();
 
         assertNotNull(logMessageEntity2.getId());
-        assertTrue(logMessageEntity2.getApplicationName().equals("applicationName"));
+        assertTrue(logMessageEntity2.getApplicationName().equals(applicationName));
     }
 
 }

@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.heliosmi.logging.data.LogMessage;
+import com.heliosmi.logging.util.ClientTestDataFactory;
 
 public class LogSenderTest {
     private Logger log = LoggerFactory.getLogger(getClass());
@@ -55,9 +56,7 @@ public class LogSenderTest {
      */
     @Test
     public void testSuccesfulSendLogMessage() {
-        String brokerURL = "vm://localhost:61616";
-        String destinationQueue = "LogMessages.Q";
-        LogSender logSender = new LogSender(brokerURL, destinationQueue);
+        LogSender logSender = ClientTestDataFactory.createLocalLogSender();
         LogMessage logMessage = new LogMessage.Builder().applicationName("applicationName").build();
         logSender.sendLogMessage(logMessage);
     }
