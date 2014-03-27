@@ -55,7 +55,6 @@ public class HibernateConfiguration {
         LocalSessionFactoryBean bean = new LocalSessionFactoryBean();
         bean.setDataSource(dataSource());
         bean.setPackagesToScan("com.heliosmi.logging.entity");
-
         return bean;
     }
 
@@ -74,7 +73,6 @@ public class HibernateConfiguration {
         dataSource.setPassword(env.getProperty("jdbc.password"));
         dataSource.setInitialSize(Integer.parseInt(env.getProperty("jdbc.initialSize")));
         dataSource.setMaxActive(Integer.parseInt(env.getProperty("jdbc.maxActive")));
-
         return dataSource;
     }
 }

@@ -3,6 +3,7 @@
 .springBeans
 .settings/
 target/
+logAnalysis-client/activemq-data/
 
 *.class
 
