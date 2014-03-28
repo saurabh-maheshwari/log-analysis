@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 import com.heliosmi.logging.data.LogMessage;
 import com.heliosmi.logging.util.ClientTestDataFactory;
 
-public class LogSenderTest {
+public class ActiveMQSinkTest {
     private Logger log = LoggerFactory.getLogger(getClass());
 
     // Set up an embedded ActiveMQ broker
@@ -42,7 +42,7 @@ public class LogSenderTest {
         for (String brokerURL : strArray) {
             for (String destinationQueue : strArray) {
                 try {
-                    LogSender logSender = new LogSender(brokerURL, destinationQueue);
+                    ActiveMQSink logSender = new ActiveMQSink(brokerURL, destinationQueue);
                     fail("test should fail due to null/blank values");
                 } catch (NullPointerException | IllegalArgumentException exception) {
                     assertNotNull(exception);
@@ -56,7 +56,7 @@ public class LogSenderTest {
      */
     @Test
     public void testSuccesfulSendLogMessage() {
-        LogSender logSender = ClientTestDataFactory.createLocalLogSender();
+        ActiveMQSink logSender = ClientTestDataFactory.createLocalLogSender();
         LogMessage logMessage = new LogMessage.Builder().applicationName("applicationName").build();
         logSender.sendLogMessage(logMessage);
     }

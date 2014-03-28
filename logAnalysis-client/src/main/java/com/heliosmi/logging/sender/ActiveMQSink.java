@@ -22,12 +22,13 @@ import org.springframework.jms.core.MessageCreator;
 import com.heliosmi.logging.data.LogMessage;
 
 /**
- * Helper class to send message to ActiveMQ queue.
+ * Helper class to send message to ActiveMQ queue. It initialize
+ * {@link JmsTemplate} to call message broker.
  * 
  * @author Saurabh Maheshwari
  * 
  */
-public class LogSender {
+public class ActiveMQSink {
     private Logger log = LoggerFactory.getLogger(getClass());
     private JmsTemplate jmsTemplate;
 
@@ -38,7 +39,7 @@ public class LogSender {
      * @param brokerURL
      * @param destinationQueue
      */
-    public LogSender(String brokerURL, String destinationQueue) {
+    public ActiveMQSink(String brokerURL, String destinationQueue) {
         Validate.notEmpty(brokerURL);
         Validate.notEmpty(destinationQueue);
         ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(brokerURL);
@@ -46,9 +47,6 @@ public class LogSender {
 
         jmsTemplate = new JmsTemplate(connectionFactory);
         jmsTemplate.setDefaultDestination(activeMQQueue);
-        /*jmsTemplate.setExplicitQosEnabled(true);
-        jmsTemplate.setTimeToLive(1);*/
-        
     }
 
     /**

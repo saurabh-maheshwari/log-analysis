@@ -22,11 +22,12 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
  * Base class for all Javabean type classes.
+ * 
  * @author Saurabh Maheshwari
- *
+ * 
  */
 public abstract class BaseBean {
-	public boolean equals(Object obj) {
+    public boolean equals(Object obj) {
         return EqualsBuilder.reflectionEquals(this, obj);
     }
 
@@ -35,7 +36,6 @@ public abstract class BaseBean {
     }
 
     public String toString() {
-        return ToStringBuilder.reflectionToString(this,
-            ToStringStyle.MULTI_LINE_STYLE);
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
     }
 }

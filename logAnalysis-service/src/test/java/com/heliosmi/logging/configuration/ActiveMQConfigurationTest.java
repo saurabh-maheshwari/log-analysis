@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.heliosmi.logging.data.LogMessage;
 import com.heliosmi.logging.entity.LogMessageEntity;
-import com.heliosmi.logging.sender.LogSender;
+import com.heliosmi.logging.sender.ActiveMQSink;
 import com.heliosmi.logging.util.ClientTestDataFactory;
 
 public class ActiveMQConfigurationTest extends BaseIntegration {
@@ -40,7 +40,7 @@ public class ActiveMQConfigurationTest extends BaseIntegration {
     @Transactional
     public void testCompleteLogMessageFlow() {
         LogMessage logMessage = ClientTestDataFactory.createLogMessage();
-        LogSender logSender = ClientTestDataFactory.createLocalLogSender();
+        ActiveMQSink logSender = ClientTestDataFactory.createLocalLogSender();
         logSender.sendLogMessage(logMessage);
 
         // check data in DB

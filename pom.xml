@@ -22,7 +22,7 @@
 		<commons-lang-version>3.3</commons-lang-version>
 		<beanutils-version>1.9.1</beanutils-version>
 		<activemq-version>5.9.0</activemq-version>
-		<hibernate-version>4.3.4.FINAL</hibernate-version>
+		<hibernate-version>4.3.4.Final</hibernate-version>
 		<!-- <commons-configuration-version>1.10</commons-configuration-version> -->
 		<commons-dbcp-version>1.4</commons-dbcp-version>
 		<guava-version>16.0.1</guava-version>

@@ -53,8 +53,7 @@ public class LogMessage extends BaseBean {
         private static final int MAX_REQUEST_RESPONSE_ERRORSTACKTRACE_LENGTH = 1000;
         private static final int MAX_FIELD_LENGTH = 50;
 
-        private String threadID;
-        private String correlationID;
+        private String threadID;        
         private String className;
         private String methodName;
         private String packageName;

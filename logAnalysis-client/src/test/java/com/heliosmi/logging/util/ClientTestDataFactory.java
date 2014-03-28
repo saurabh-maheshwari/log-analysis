@@ -1,7 +1,7 @@
 package com.heliosmi.logging.util;
 
 import com.heliosmi.logging.data.LogMessage;
-import com.heliosmi.logging.sender.LogSender;
+import com.heliosmi.logging.sender.ActiveMQSink;
 
 public class ClientTestDataFactory {
 
@@ -25,10 +25,10 @@ public class ClientTestDataFactory {
      * Create a local LogSender. It will send data to embedded broker within VM. 
      * @return LogSender
      */
-    public static final LogSender createLocalLogSender(){
+    public static final ActiveMQSink createLocalLogSender(){
         String brokerURL = "vm://localhost:61617";
         String destinationQueue = "LogMessages.Q";
-        LogSender logSender = new LogSender(brokerURL, destinationQueue);
+        ActiveMQSink logSender = new ActiveMQSink(brokerURL, destinationQueue);
         return logSender;
     }
 }
