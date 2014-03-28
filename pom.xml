@@ -35,6 +35,9 @@
 
 		<!-- plugins -->
 		<cobertura-plugin-version>2.6</cobertura-plugin-version>
+		<pmd-version>3.1</pmd-version>
+		<checkstyle-version>2.12</checkstyle-version>
+		<findbugs-version>2.5.3</findbugs-version>
 	</properties>
 
 
@@ -141,6 +144,21 @@
 				<configuration>
 					<mainClass>org.test.int1.Main</mainClass>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>${pmd-version}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>${checkstyle-version}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+				<version>${findbugs-version}</version>
 			</plugin>
 		</plugins>
 	</build>
