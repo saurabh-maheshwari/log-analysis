@@ -8,8 +8,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.listener.DefaultMessageListenerContainer;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 /**
  * Base class for all Integration tests. It will initialize the Spring
@@ -18,11 +20,16 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * @author Saurabh Maheshwari
  * 
  */
-@ContextConfiguration(locations = { "classpath:/spring/root-context.xml" })
+// @ContextConfiguration(locations = { "classpath:/spring/root-context.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
-public abstract class BaseIntegration {
-    private Logger log = LoggerFactory.getLogger(getClass());
+@WebAppConfiguration
+@ContextConfiguration(classes = { AppConfig.class, MVCConfig.class,TestEnv.class })
+@ActiveProfiles("dev")
+public abstract class AbstractBaseIntegrationTest {
     
+    //
+    protected Logger log = LoggerFactory.getLogger(getClass());
+
     @Autowired
     private DefaultMessageListenerContainer defaultMessageListenerContainer;
 
@@ -30,7 +37,7 @@ public abstract class BaseIntegration {
     private BrokerService broker = new BrokerService();
 
     @Before
-    public void setUp() throws Exception {        
+    public void setUp() throws Exception {
         broker.addConnector("tcp://localhost:61617");
         broker.start();
     }

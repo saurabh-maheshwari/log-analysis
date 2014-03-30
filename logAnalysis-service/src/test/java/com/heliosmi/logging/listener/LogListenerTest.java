@@ -17,12 +17,12 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.heliomi.logging.util.ServiceTestDataFactory;
-import com.heliosmi.logging.configuration.BaseIntegration;
+import com.heliosmi.logging.configuration.AbstractBaseIntegrationTest;
 import com.heliosmi.logging.data.LogMessage;
 import com.heliosmi.logging.entity.LogMessageEntity;
 import com.heliosmi.logging.util.ClientTestDataFactory;
 
-public class LogListenerTest extends BaseIntegration {
+public class LogListenerTest extends AbstractBaseIntegrationTest {
 
     @Autowired
     private MessageListener logListener;

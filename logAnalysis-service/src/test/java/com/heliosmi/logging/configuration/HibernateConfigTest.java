@@ -18,10 +18,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.heliomi.logging.util.ServiceTestDataFactory;
 import com.heliosmi.logging.entity.LogMessageEntity;
 
-public class HibernateConfigurationTest extends BaseIntegration {
+public class HibernateConfigTest extends AbstractBaseIntegrationTest {
 
     @Autowired
-    private HibernateConfiguration hibernateConfiguration;
+    private HibernateConfig hibernateConfiguration;
 
     @Autowired
     private SessionFactory sessionFactory;

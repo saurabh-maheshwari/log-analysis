@@ -24,9 +24,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * 
  */
 @Configuration
-@PropertySource("classpath:app.properties")
+//@PropertySource("classpath:app.properties")
 @EnableTransactionManagement
-public class HibernateConfiguration {
+public class HibernateConfig {
     private Logger log = LoggerFactory.getLogger(getClass());
 
     @Autowired

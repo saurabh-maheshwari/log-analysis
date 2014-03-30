@@ -15,10 +15,10 @@ import com.heliosmi.logging.entity.LogMessageEntity;
 import com.heliosmi.logging.sender.ActiveMQSink;
 import com.heliosmi.logging.util.ClientTestDataFactory;
 
-public class ActiveMQConfigurationTest extends BaseIntegration {
+public class AppConfigTest extends AbstractBaseIntegrationTest {
 
     @Autowired
-    private ActiveMQConfiguration activeMQConfiguration;
+    private AppConfig activeMQConfiguration;
 
     @Autowired
     private DefaultMessageListenerContainer defaultMessageListenerContainer;

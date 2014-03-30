@@ -23,11 +23,11 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
- * Configuration class to initialize ActiveMQ beans. Also scans the base-package
+ * Base Configuration class to initialize ActiveMQ beans. Also scans the base-package
  * to pull other beans. 
  * <p>This class should be initialized after
- * {@link HibernateConfiguration}, since <code>transactionManager</code> defined
- * in {@link HibernateConfiguration} is used for persistence.
+ * {@link HibernateConfig}, since <code>transactionManager</code> defined
+ * in {@link HibernateConfig} is used for persistence.
  * 
  * @author Saurabh Maheshwari
  * 
@@ -35,9 +35,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @ComponentScan("com.heliosmi.logging")
-@Import(HibernateConfiguration.class)
+@Import(HibernateConfig.class)
 @EnableAspectJAutoProxy
-public class ActiveMQConfiguration {
+public class AppConfig {
     private Logger log = LoggerFactory.getLogger(getClass());
 
     @Autowired

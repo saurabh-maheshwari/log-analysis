@@ -21,7 +21,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
- * Base class for all Javabean type classes.
+ * Base class for all JavaBean-style classes.
  * 
  * @author Saurabh Maheshwari
  * 

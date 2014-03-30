@@ -18,12 +18,14 @@
 		<java-version>1.7</java-version>
 		<project-build-sourceEncoding>UTF-8</project-build-sourceEncoding>
 		<spring-version>4.0.2.RELEASE</spring-version>
+		<jackson-version>2.3.2</jackson-version>
 		<aspectj-version>1.7.4</aspectj-version>
 		<slf4j-version>1.7.6</slf4j-version>
 		<commons-lang-version>3.3</commons-lang-version>
 		<beanutils-version>1.9.1</beanutils-version>
 		<activemq-version>5.9.0</activemq-version>
 		<hibernate-version>4.3.4.Final</hibernate-version>
+		<javax-servlet-version>3.1.0</javax-servlet-version>
 		<!-- <commons-configuration-version>1.10</commons-configuration-version> -->
 		<commons-dbcp-version>1.4</commons-dbcp-version>
 		<guava-version>16.0.1</guava-version>
@@ -131,7 +133,7 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.1</version>
 				<configuration>
-				<encoding>${project-build-sourceEncoding}</encoding>
+					<encoding>${project-build-sourceEncoding}</encoding>
 					<source>${java-version}</source>
 					<target>${java-version}</target>
 					<compilerArgument>-Xlint:all</compilerArgument>
@@ -161,6 +163,11 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>findbugs-maven-plugin</artifactId>
 				<version>${findbugs-version}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
 			</plugin>
 		</plugins>
 	</build>
