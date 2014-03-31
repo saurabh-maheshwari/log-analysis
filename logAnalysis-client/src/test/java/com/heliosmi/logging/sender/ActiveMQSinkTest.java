@@ -13,6 +13,12 @@ import org.slf4j.LoggerFactory;
 import com.heliosmi.logging.data.LogMessage;
 import com.heliosmi.logging.util.ClientTestDataFactory;
 
+/**
+ * Creates an embedded ActiveMQ broker for testing.
+ * 
+ * @author Saurabh Maheshwari
+ * 
+ */
 public class ActiveMQSinkTest {
     private Logger log = LoggerFactory.getLogger(getClass());
 
@@ -21,7 +27,6 @@ public class ActiveMQSinkTest {
 
     @Before
     public void setUp() throws Exception {
-        // configure the broker
         broker.addConnector("tcp://localhost:61617");
         broker.start();
     }
@@ -33,7 +38,7 @@ public class ActiveMQSinkTest {
     }
 
     /**
-     * LogSender constructor should throw an error if null/blank values were
+     * ActiveMQSink constructor should throw an error if null/blank values were
      * passed to it.
      */
     @Test
@@ -59,21 +64,7 @@ public class ActiveMQSinkTest {
         ActiveMQSink logSender = ClientTestDataFactory.createLocalLogSender();
         LogMessage logMessage = new LogMessage.Builder().applicationName("applicationName").build();
         logSender.sendLogMessage(logMessage);
-    }
 
-    /*
-     * TODO persist data locally in case of failure.
-     * 
-     * @Test public void testUnsuccesfulSendLogMessage() { String brokerURL =
-     * "tcp://192.168.0.10:61616"; String destinationQueue = "dummyQ"; LogSender
-     * logSender = new LogSender(brokerURL, destinationQueue); LogMessage
-     * logMessage = new
-     * LogMessage.Builder().applicationName("applicationName").build();
-     * 
-     * log.info("Starting transaction"); try {
-     * logSender.sendLogMessage(logMessage); } catch (Exception e) { // TODO
-     * Auto-generated catch block log.error(ExceptionUtils.getStackTrace(e)); }
-     * }
-     */
+    }
 
 }

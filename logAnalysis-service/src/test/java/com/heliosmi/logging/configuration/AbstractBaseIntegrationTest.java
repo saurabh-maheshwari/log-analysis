@@ -17,23 +17,24 @@ import org.springframework.test.context.web.WebAppConfiguration;
  * Base class for all Integration tests. It will initialize the Spring
  * container.
  * 
+ * Sets up embedded ActiveMQ broker for use in Integration Tests.
+ * 
  * @author Saurabh Maheshwari
  * 
  */
 // @ContextConfiguration(locations = { "classpath:/spring/root-context.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = { AppConfig.class, MVCConfig.class,TestEnv.class })
+@ContextConfiguration(classes = { AppConfig.class, MVCConfig.class, TestEnv.class, ProdEnv.class })
 @ActiveProfiles("dev")
 public abstract class AbstractBaseIntegrationTest {
-    
+
     //
     protected Logger log = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private DefaultMessageListenerContainer defaultMessageListenerContainer;
-
-    // Set up an embedded ActiveMQ broker
+    
     private BrokerService broker = new BrokerService();
 
     @Before

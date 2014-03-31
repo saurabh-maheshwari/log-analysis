@@ -41,7 +41,7 @@ public class AppConfig {
     private Logger log = LoggerFactory.getLogger(getClass());
 
     @Autowired
-    private Environment env;
+    private EnvConfig env;
 
     @Autowired
     private MessageListener logListener;

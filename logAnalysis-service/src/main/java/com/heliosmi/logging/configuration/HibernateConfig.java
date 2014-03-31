@@ -30,7 +30,7 @@ public class HibernateConfig {
     private Logger log = LoggerFactory.getLogger(getClass());
 
     @Autowired
-    private Environment env;
+    private EnvConfig env;
 
     /**
      * Defines a <code>transactionManager</code> for Hibernate managed entities.

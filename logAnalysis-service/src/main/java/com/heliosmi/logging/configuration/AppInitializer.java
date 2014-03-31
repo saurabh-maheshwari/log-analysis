@@ -12,7 +12,7 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        Class[] rootConfigs = new Class[] { AppConfig.class };
+        Class[] rootConfigs = new Class[] { AppConfig.class, ProdEnv.class };
         return rootConfigs;
     }
 
