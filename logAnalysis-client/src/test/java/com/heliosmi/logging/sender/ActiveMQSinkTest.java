@@ -47,7 +47,7 @@ public class ActiveMQSinkTest {
         for (String brokerURL : strArray) {
             for (String destinationQueue : strArray) {
                 try {
-                    ActiveMQSink logSender = new ActiveMQSink(brokerURL, destinationQueue);
+                    ActiveMQSink activeMQSink = new ActiveMQSink(brokerURL, destinationQueue);
                     fail("test should fail due to null/blank values");
                 } catch (NullPointerException | IllegalArgumentException exception) {
                     assertNotNull(exception);
@@ -61,9 +61,9 @@ public class ActiveMQSinkTest {
      */
     @Test
     public void testSuccesfulSendLogMessage() {
-        ActiveMQSink logSender = ClientTestDataFactory.createLocalLogSender();
+        ActiveMQSink activeMQSink = ClientTestDataFactory.createLocalActiveMQSink();
         LogMessage logMessage = new LogMessage.Builder().applicationName("applicationName").build();
-        logSender.sendLogMessage(logMessage);
+        activeMQSink.sendLogMessage(logMessage);
 
     }
 

@@ -21,7 +21,7 @@ import com.heliosmi.logging.data.LogMessage;
 
 /**
  * AOP Logger to log across all Spring beans with in the application. It should
- * not use LogSender to submit data to sink.
+ * not use ActiveMQSink to submit data to sink.
  * 
  * Generates a unique threadId using UNIX time.
  * @author Saurabh Maheshwari

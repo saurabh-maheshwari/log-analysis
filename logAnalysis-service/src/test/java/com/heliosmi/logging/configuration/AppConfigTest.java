@@ -40,8 +40,8 @@ public class AppConfigTest extends AbstractBaseIntegrationTest {
     @Transactional
     public void testCompleteLogMessageFlow() {
         LogMessage logMessage = ClientTestDataFactory.createLogMessage();
-        ActiveMQSink logSender = ClientTestDataFactory.createLocalLogSender();
-        logSender.sendLogMessage(logMessage);
+        ActiveMQSink activeMQSink = ClientTestDataFactory.createLocalActiveMQSink();
+        activeMQSink.sendLogMessage(logMessage);
 
         // check data in DB
         Session session = sessionFactory.getCurrentSession();

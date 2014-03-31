@@ -33,7 +33,7 @@ public class ActiveMQSink {
     private JmsTemplate jmsTemplate;
 
     /**
-     * Create a new LogSender with provided ActiveMQ specific brokerURL and
+     * Create a new ActiveMQSink with provided ActiveMQ specific brokerURL and
      * queue.
      * 
      * @param brokerURL

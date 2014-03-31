@@ -22,13 +22,13 @@ public class ClientTestDataFactory {
     }
     
     /**
-     * Create a local LogSender. It will send data to embedded broker within VM. 
-     * @return LogSender
+     * Create a local ActiveMQSink. It will send data to embedded broker within VM. 
+     * @return ActiveMQSink
      */
-    public static final ActiveMQSink createLocalLogSender(){
+    public static final ActiveMQSink createLocalActiveMQSink(){
         String brokerURL = "vm://localhost:61617";
         String destinationQueue = "LogMessages.Q";
-        ActiveMQSink logSender = new ActiveMQSink(brokerURL, destinationQueue);
-        return logSender;
+        ActiveMQSink activeMQSink = new ActiveMQSink(brokerURL, destinationQueue);
+        return activeMQSink;
     }
 }
