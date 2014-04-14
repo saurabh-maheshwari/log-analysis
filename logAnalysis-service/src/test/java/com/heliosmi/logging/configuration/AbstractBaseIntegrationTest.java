@@ -29,12 +29,12 @@ import org.springframework.test.context.web.WebAppConfiguration;
 @ActiveProfiles("dev")
 public abstract class AbstractBaseIntegrationTest {
 
-    //
+    /** Logger available to subclasses */
     protected Logger log = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private DefaultMessageListenerContainer defaultMessageListenerContainer;
-    
+
     private BrokerService broker = new BrokerService();
 
     @Before
@@ -49,5 +49,4 @@ public abstract class AbstractBaseIntegrationTest {
         defaultMessageListenerContainer.stop();
         broker.stop();
     }
-
 }

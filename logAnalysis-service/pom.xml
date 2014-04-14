@@ -35,6 +35,14 @@
 			<version>${jackson-version}</version>
 		</dependency>
 
+		<!-- jClouds -->
+		<dependency>
+			<groupId>org.apache.jclouds</groupId>
+			<artifactId>jclouds-all</artifactId>
+			<version>${jclouds-version}</version>
+		</dependency>
+
+
 
 		<!-- Spring -->
 		<dependency>

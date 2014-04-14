@@ -18,13 +18,14 @@
 		<java-version>1.7</java-version>
 		<project-build-sourceEncoding>UTF-8</project-build-sourceEncoding>
 		<spring-version>4.0.3.RELEASE</spring-version>
+		<jclouds-version>1.7.1</jclouds-version>
 		<jackson-version>2.3.2</jackson-version>
 		<aspectj-version>1.7.4</aspectj-version>
 		<slf4j-version>1.7.6</slf4j-version>
 		<commons-lang-version>3.3.1</commons-lang-version>
 		<beanutils-version>1.9.1</beanutils-version>
 		<activemq-version>5.9.0</activemq-version>
-		<hibernate-version>4.3.4.Final</hibernate-version>
+		<hibernate-version>4.3.5.Final</hibernate-version>
 		<javax-servlet-version>3.1.0</javax-servlet-version>		
 		<commons-dbcp-version>1.4</commons-dbcp-version>
 		<guava-version>16.0.1</guava-version>		

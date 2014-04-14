@@ -66,5 +66,19 @@ public class ActiveMQSinkTest {
         activeMQSink.sendLogMessage(logMessage);
 
     }
+    
+    /**
+     * Integration test to send data to embedded broker.
+     */
+    /*@Test
+    public void testLoad() {
+        ActiveMQSink activeMQSink = new ActiveMQSink("tcp://192.168.0.9:61616", "LogMessages.Q");
+        LogMessage logMessage = ClientTestDataFactory.createLogMessage();
+        for (int i = 0; i < 10000; i++) {
+            log.info("index: " + i);
+            activeMQSink.sendLogMessage(logMessage);
+        }
+
+    }*/
 
 }

@@ -22,7 +22,7 @@ import org.springframework.jms.core.MessageCreator;
 import com.heliosmi.logging.data.LogMessage;
 
 /**
- * Helper class to send message to ActiveMQ queue. It initialize
+ * Helper class to send async message to ActiveMQ queue. It initializes
  * {@link JmsTemplate} to call message broker.
  * 
  * @author Saurabh Maheshwari
@@ -42,7 +42,8 @@ public class ActiveMQSink {
     public ActiveMQSink(String brokerURL, String destinationQueue) {
         Validate.notEmpty(brokerURL);
         Validate.notEmpty(destinationQueue);
-        ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(brokerURL);
+        ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory(brokerURL);
+        connectionFactory.setAlwaysSyncSend(true);
         ActiveMQQueue activeMQQueue = new ActiveMQQueue(destinationQueue);
 
         jmsTemplate = new JmsTemplate(connectionFactory);
