@@ -25,7 +25,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 // @ContextConfiguration(locations = { "classpath:/spring/root-context.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = { AppConfig.class, MVCConfig.class, TestEnv.class, ProdEnv.class })
+@ContextConfiguration(classes = { AppConfig.class, WebMvcConfig.class, TestEnv.class, ProdEnv.class })
 @ActiveProfiles("dev")
 public abstract class AbstractBaseIntegrationTest {
 

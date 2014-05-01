@@ -26,9 +26,9 @@
 		<beanutils-version>1.9.1</beanutils-version>
 		<activemq-version>5.9.0</activemq-version>
 		<hibernate-version>4.3.5.Final</hibernate-version>
-		<javax-servlet-version>3.1.0</javax-servlet-version>		
+		<javax-servlet-version>3.1.0</javax-servlet-version>
 		<commons-dbcp-version>1.4</commons-dbcp-version>
-		<guava-version>16.0.1</guava-version>		
+		<guava-version>16.0.1</guava-version>
 		<mysql-connector-version>5.1.29</mysql-connector-version>
 		<log4j-version>1.2.17</log4j-version>
 		<junit-version>4.11</junit-version>
@@ -87,7 +87,7 @@
 			<version>${spring-version}</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<!-- Used to initialize embedded ActiveMQ broker -->
 		<dependency>
 			<groupId>org.apache.activemq</groupId>
