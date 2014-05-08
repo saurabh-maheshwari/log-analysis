@@ -17,12 +17,12 @@
 	<properties>
 		<java-version>1.7</java-version>
 		<project-build-sourceEncoding>UTF-8</project-build-sourceEncoding>
-		<spring-version>4.0.3.RELEASE</spring-version>
-		<jclouds-version>1.7.1</jclouds-version>
-		<jackson-version>2.3.2</jackson-version>
-		<aspectj-version>1.7.4</aspectj-version>
-		<slf4j-version>1.7.6</slf4j-version>
-		<commons-lang-version>3.3.1</commons-lang-version>
+		<spring-version>4.0.4.RELEASE</spring-version>
+		<jclouds-version>1.7.2</jclouds-version>
+		<jackson-version>2.3.3</jackson-version>
+		<aspectj-version>1.8.0</aspectj-version>
+		<slf4j-version>1.7.7</slf4j-version>
+		<commons-lang-version>3.3.2</commons-lang-version>
 		<beanutils-version>1.9.1</beanutils-version>
 		<activemq-version>5.9.0</activemq-version>
 		<hibernate-version>4.3.5.Final</hibernate-version>
