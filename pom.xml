@@ -15,17 +15,17 @@
 	<packaging>pom</packaging>
 	<version>0.1.0-BUILD-SNAPSHOT</version>
 	<properties>
-		<java-version>1.7</java-version>
+		<java-version>1.8</java-version>
 		<project-build-sourceEncoding>UTF-8</project-build-sourceEncoding>
-		<spring-version>4.0.4.RELEASE</spring-version>
-		<jclouds-version>1.7.2</jclouds-version>
-		<jackson-version>2.3.3</jackson-version>
-		<aspectj-version>1.8.0</aspectj-version>
+		<spring-version>4.1.0.RELEASE</spring-version>
+		<jclouds-version>1.7.3</jclouds-version>
+		<jackson-version>2.4.1</jackson-version>
+		<aspectj-version>1.8.1</aspectj-version>
 		<slf4j-version>1.7.7</slf4j-version>
 		<commons-lang-version>3.3.2</commons-lang-version>
-		<beanutils-version>1.9.1</beanutils-version>
+		<beanutils-version>1.9.2</beanutils-version>
 		<activemq-version>5.10.0</activemq-version>
-		<hibernate-version>4.3.5.Final</hibernate-version>
+		<hibernate-version>4.3.6.Final</hibernate-version>
 		<javax-servlet-version>3.1.0</javax-servlet-version>
 		<commons-dbcp-version>1.4</commons-dbcp-version>
 		<guava-version>16.0.1</guava-version>
@@ -169,7 +169,7 @@
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.2</version>
-			</plugin>
+			</plugin>			
 		</plugins>
 	</build>
 
